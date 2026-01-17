@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ArrowRight, ShieldCheck, Zap, BarChart3 } from 'lucide-react';
+import { ArrowRight, Zap } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 export function Hero() {
@@ -58,45 +58,7 @@ export function Hero() {
                         </div>
                     </motion.div>
 
-                    {/* Stats/Features Banner */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 0.4 }}
-                        className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-28"
-                    >
-                        {[
-                            {
-                                icon: BarChart3,
-                                title: t.hero.features.yield,
-                                desc: language === 'en'
-                                    ? "0.3% - 1.1% daily returns backed by real-world market making activity."
-                                    : "0.3% - 1.1% 的每日回报，由真实的做市活动提供支持。"
-                            },
-                            {
-                                icon: ShieldCheck,
-                                title: t.hero.features.reserves,
-                                desc: language === 'en'
-                                    ? "Governance-free smart contracts with audited on-chain transparency."
-                                    : "无治理智能合约，具有经过审计的链上透明度。"
-                            },
-                            {
-                                icon: Zap,
-                                title: t.hero.features.audited,
-                                desc: language === 'en'
-                                    ? "Zero human intervention. Rules-based market making and profit distribution."
-                                    : "零人为干预。基于规则的做市和利润分配。"
-                            }
-                        ].map((feature, i) => (
-                            <div key={i} className="glass-card p-10 text-left border-white/5 hover:border-brand-orange/30 transition-all group">
-                                <div className="w-14 h-14 bg-brand-orange/10 rounded-2xl flex items-center justify-center text-brand-orange mb-6 group-hover:scale-110 group-hover:bg-brand-orange/20 transition-all shadow-[0_0_15px_rgba(255,109,1,0.1)]">
-                                    <feature.icon className="w-8 h-8" />
-                                </div>
-                                <h3 className="text-xl font-bold mb-3 group-hover:text-brand-orange transition-colors">{feature.title}</h3>
-                                <p className="text-gray-400 text-sm leading-relaxed">{feature.desc}</p>
-                            </div>
-                        ))}
-                    </motion.div>
+                    {/* Stats/Features Banner Removed as per request */}
                 </div>
             </div>
         </section>

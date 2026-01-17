@@ -16,11 +16,7 @@ export const translations = {
             subtitle: "The evolution of DeFi. A truly decentralized banking system providing sustainable on-chain revenue through algorithmic market making.",
             ctaPrimary: "Launch App",
             ctaSecondary: "Read Whitepaper",
-            features: {
-                yield: "Smart Yield",
-                reserves: "Real Reserves",
-                audited: "Fully Audited"
-            }
+
         },
         protocol: {
             badge: "THE ENGINE ROOM",
@@ -125,11 +121,7 @@ export const translations = {
             subtitle: "DeFi 的进化。一个真正的去中心化银行系统，通过算法做市提供可持续的链上收入。",
             ctaPrimary: "立即启动",
             ctaSecondary: "白皮书",
-            features: {
-                yield: "智能收益",
-                reserves: "真实储备",
-                audited: "全面审计"
-            }
+
         },
         protocol: {
             badge: "底层引擎室",
