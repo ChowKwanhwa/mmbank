@@ -6,6 +6,49 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Zap } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
+const FloatingParticles = () => {
+    const [particles, setParticles] = React.useState<any[]>([]);
+
+    React.useEffect(() => {
+        setParticles([...Array(15)].map((_, i) => ({
+            id: i,
+            x: Math.random() * 100,
+            y: Math.random() * 100,
+            size: Math.random() * 3 + 1,
+            duration: 10 + Math.random() * 20,
+            delay: Math.random() * 5
+        })));
+    }, []);
+
+    return (
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            {particles.map((p) => (
+                <motion.div
+                    key={p.id}
+                    className="absolute bg-brand-orange/30 rounded-full blur-[1px]"
+                    style={{
+                        left: `${p.x}%`,
+                        top: `${p.y}%`,
+                        width: p.size,
+                        height: p.size,
+                    }}
+                    animate={{
+                        y: [-20, -100],
+                        opacity: [0, 0.5, 0],
+                        scale: [1, 1.5, 1]
+                    }}
+                    transition={{
+                        duration: p.duration,
+                        repeat: Infinity,
+                        ease: "linear",
+                        delay: p.delay
+                    }}
+                />
+            ))}
+        </div>
+    );
+};
+
 export function Hero() {
     const { t, language } = useLanguage();
 
@@ -17,7 +60,7 @@ export function Hero() {
                     src="/assets/hero_bg.png"
                     alt="MM Bank Background"
                     fill
-                    className="object-cover opacity-60 mix-blend-screen"
+                    className="object-cover opacity-80 mix-blend-screen"
                     priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-black/20 to-black" />
@@ -25,8 +68,10 @@ export function Hero() {
             </div>
 
             {/* Decorative Glows */}
-            <div className="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-brand-orange/30 rounded-full blur-[140px] animate-pulse pointer-events-none" />
-            <div className="absolute bottom-[20%] right-[10%] w-[400px] h-[400px] bg-orange-600/20 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-brand-orange/20 rounded-full blur-[140px] animate-pulse pointer-events-none" />
+            <div className="absolute bottom-[20%] right-[10%] w-[400px] h-[400px] bg-orange-600/10 rounded-full blur-[120px] pointer-events-none" />
+
+            <FloatingParticles />
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="max-w-5xl mx-auto text-center">
@@ -57,10 +102,9 @@ export function Hero() {
                             </button>
                         </div>
                     </motion.div>
-
-                    {/* Stats/Features Banner Removed as per request */}
                 </div>
             </div>
         </section>
     );
 }
+

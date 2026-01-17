@@ -117,8 +117,7 @@ export function Architecture() {
                             </div>
                             <h2 className="text-4xl md:text-6xl xl:text-7xl font-black leading-[0.9] tracking-tighter">
                                 {t.architecture.title}<br />
-                                <span className="text-brand-orange">{t.architecture.titleHighlight}</span><br />
-                                {language === "en" ? "Architecture" : "体系"}
+                                <span className="text-brand-orange">{t.architecture.titleHighlight}</span>
                             </h2>
                             <p className="text-gray-400 text-lg max-w-xl leading-relaxed">
                                 {t.architecture.subtitle}
