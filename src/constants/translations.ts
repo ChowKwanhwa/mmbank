@@ -15,8 +15,7 @@ export const translations = {
             title2: "Stable Cash Flow",
             subtitle: "The evolution of DeFi. A truly decentralized banking system providing sustainable on-chain revenue through algorithmic market making.",
             ctaPrimary: "Launch App",
-            ctaSecondary: "Read Whitepaper",
-
+            ctaSecondary: "Read Whitepaper"
         },
         protocol: {
             badge: "THE ENGINE ROOM",
@@ -120,15 +119,14 @@ export const translations = {
             title2: "稳定现金流",
             subtitle: "DeFi 的进化。一个真正的去中心化银行系统，通过算法做市提供可持续的链上收入。",
             ctaPrimary: "立即启动",
-            ctaSecondary: "白皮书",
-
+            ctaSecondary: "白皮书"
         },
         protocol: {
             badge: "底层引擎室",
             title: "多引擎",
             titleHighlight: "生态架构",
             subtitle: "模块化去中心化架构，通过跨领域引擎驱动流动性。",
-            core: "银行核心核心",
+            core: "银行核心",
             engines: {
                 gamefi: "链游生态",
                 rwa: "真实资产",
@@ -159,8 +157,8 @@ export const translations = {
             titleHighlight: "周期循环",
             subtitle: "通过自动化流动性周期实现资本效率最大化。",
             cycles: [
-                { title: "稳健收益", desc: "低风险算法流动性提供。" },
-                { title: "动态套利", desc: "捕捉跨交易所价格差异。" },
+                { title: "稳健收益", desc: "低风险的算法化流动性供给。" },
+                { title: "动态套利", desc: "跨交易所价差套利捕获。" },
                 { title: "杠杆质押", desc: "为长期持有者优化奖励。" },
                 { title: "协议增长", desc: "生态系统收入全额再分配。" }
             ]
@@ -183,7 +181,7 @@ export const translations = {
             }
         },
         security: {
-            title: "信任的",
+            title: "信任之",
             titleHighlight: "基石",
             subtitle: "安全并非事后想法；它已深深植入我们每一行不可篡改的代码中。",
             features: [
@@ -208,7 +206,7 @@ export const translations = {
                 terms: "服务协议"
             },
             rights: "© 2024 MM BANK. 版权所有。",
-            powered: "由 BSC 主网提供动力 · 链上银行业务系统"
+            powered: "基于 BSC 主网 · 链上银行系统"
         }
     }
 };
