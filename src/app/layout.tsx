@@ -19,7 +19,6 @@ export const metadata: Metadata = {
   description: "Decentralized On-Chain Bank for Sustainable Yield. Providing stable cash flow and liquidity via a multi-engine on-chain ecosystem.",
   icons: {
     icon: "/favicon.png",
-    shortcut: "/favicon.ico",
   },
 };
 

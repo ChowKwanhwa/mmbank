@@ -275,7 +275,7 @@ export function Hero() {
             <LightStreaks />
             <FloatingParticles />
 
-            <div className="container mx-auto px-6 relative z-10">
+            <div className="container mx-auto px-6 relative z-10 pb-32 md:pb-40">
                 <div className="max-w-5xl mx-auto text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -354,6 +354,67 @@ export function Hero() {
                                 <span className="relative z-10">{language === 'en' ? 'Coming Soon' : '即将上线'}</span>
                             </motion.button>
                         </div>
+                    </motion.div>
+                </div>
+            </div>
+
+            {/* Partners Marquee */}
+            <div className="absolute bottom-8 md:bottom-12 left-0 right-0 z-20">
+                <div className="relative overflow-hidden">
+                    {/* Gradient masks */}
+                    <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
+                    <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
+
+                    {/* Scrolling container */}
+                    <motion.div
+                        className="flex items-center gap-8 md:gap-16"
+                        animate={{
+                            x: [0, -1920]
+                        }}
+                        transition={{
+                            x: {
+                                duration: 30,
+                                repeat: Infinity,
+                                ease: "linear"
+                            }
+                        }}
+                    >
+                        {/* Double the logos for seamless loop */}
+                        {[...Array(2)].map((_, repeatIndex) => (
+                            <div key={repeatIndex} className="flex items-center gap-8 md:gap-16 shrink-0">
+                                {[
+                                    { name: 'blackrock', width: 'w-28 md:w-36' },
+                                    { name: 'bnbchain', width: 'w-24 md:w-32' },
+                                    { name: 'chainlink', width: 'w-28 md:w-36' },
+                                    { name: 'chainsecurities', width: 'w-32 md:w-40' },
+                                    { name: 'deutsche', width: 'w-40 md:w-52' },
+                                    { name: 'gemini', width: 'w-36 md:w-48' },
+                                    { name: 'goldman-sachs', width: 'w-40 md:w-52' },
+                                    { name: 'jpm-brown', width: 'w-28 md:w-36' },
+                                    { name: 'kpmg', width: 'w-20 md:w-24' },
+                                    { name: 'metamask', width: 'w-32 md:w-40' },
+                                    { name: 'morganstanley', width: 'w-44 md:w-56' },
+                                    { name: 'nascent', width: 'w-36 md:w-48' },
+                                    { name: 'okx', width: 'w-16 md:w-20' },
+                                    { name: 'sp-global', width: 'w-28 md:w-36' },
+                                    { name: 'tether', width: 'w-24 md:w-28' },
+                                    { name: 'theblock', width: 'w-24 md:w-32' }
+                                ].map((logo) => (
+                                    <div
+                                        key={`${repeatIndex}-${logo.name}`}
+                                        className={`relative h-8 md:h-10 ${logo.width} shrink-0 opacity-50 hover:opacity-80 transition-opacity`}
+                                        style={{ filter: 'brightness(0) invert(1)' }}
+                                    >
+                                        <Image
+                                            src={`/companyLogos/${logo.name}.svg`}
+                                            alt={logo.name}
+                                            fill
+                                            className="object-contain"
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        ))}
                     </motion.div>
                 </div>
             </div>
