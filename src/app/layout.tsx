@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white selection:bg-orange-500/30 selection:text-orange-500`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white selection:bg-orange-500/30 selection:text-orange-500 overflow-x-hidden`}
       >
         <LanguageProvider>
           <Web3Provider>

@@ -68,12 +68,12 @@ export function Tokenomics() {
     ];
 
     return (
-        <section id="tokenomics" className="h-screen py-10 relative overflow-hidden bg-black flex flex-col justify-center">
+        <section id="tokenomics" className="min-h-screen md:h-screen py-16 md:py-10 relative overflow-hidden bg-black flex flex-col justify-center">
             {/* Ambient Background Glows */}
             <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] bg-brand-orange/5 blur-[100px] rounded-full pointer-events-none" />
             <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[400px] h-[400px] bg-brand-orange/5 blur-[100px] rounded-full pointer-events-none" />
 
-            <div className="container mx-auto px-6 relative z-10 scale-[0.95] xl:scale-100">
+            <div className="container mx-auto px-6 relative z-10 xl:scale-100">
                 <div className="text-center mb-10">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
@@ -105,7 +105,7 @@ export function Tokenomics() {
                             <h3 className="text-lg font-black uppercase tracking-tight">{t.tokenomics.supply}</h3>
                         </div>
 
-                        <div className="h-64 md:h-72 w-full relative">
+                        <div className="h-56 md:h-72 w-full relative">
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 border border-brand-orange/20 rounded-full animate-pulse-ring" />
 
                             <ResponsiveContainer width="100%" height="100%">
@@ -114,8 +114,8 @@ export function Tokenomics() {
                                         data={distributionData}
                                         cx="50%"
                                         cy="50%"
-                                        innerRadius={70}
-                                        outerRadius={105}
+                                        innerRadius={55}
+                                        outerRadius={85}
                                         paddingAngle={8}
                                         dataKey="value"
                                         stroke="rgba(255,255,255,0.05)"
@@ -160,7 +160,7 @@ export function Tokenomics() {
                             <h3 className="text-lg font-black uppercase tracking-tight">{t.tokenomics.deflation}</h3>
                         </div>
 
-                        <div className="h-64 md:h-72 w-full">
+                        <div className="h-48 md:h-72 w-full">
                             <ResponsiveContainer width="100%" height="100%">
                                 <AreaChart data={burnTrendData}>
                                     <defs>

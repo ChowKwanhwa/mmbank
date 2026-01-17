@@ -101,7 +101,7 @@ export function Architecture() {
     };
 
     return (
-        <section id="architecture" className="h-screen flex items-center bg-black/50 overflow-hidden" onMouseMove={handleMouseMove}>
+        <section id="architecture" className="min-h-screen md:h-screen flex items-center bg-black/50 overflow-hidden" onMouseMove={handleMouseMove}>
             <div className="container mx-auto px-6">
                 <div className="flex flex-col lg:flex-row items-center gap-12 xl:gap-20">
                     <div className="lg:w-1/2 space-y-6">

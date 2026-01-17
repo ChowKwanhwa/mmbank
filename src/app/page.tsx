@@ -37,6 +37,76 @@ const SectionOverlay = ({ children, zIndex, opacity, height = "min-h-screen" }: 
   </motion.div>
 );
 
+// Mobile Section - with smooth scroll-triggered animations
+const MobileSection = ({
+  children,
+  variant = 'fadeUp',
+  delay = 0
+}: {
+  children: React.ReactNode,
+  variant?: 'fadeUp' | 'fadeIn' | 'slideLeft' | 'slideRight' | 'scale' | 'blur',
+  delay?: number
+}) => {
+  const variants = {
+    fadeUp: {
+      hidden: { opacity: 0, y: 60 },
+      visible: { opacity: 1, y: 0 }
+    },
+    fadeIn: {
+      hidden: { opacity: 0 },
+      visible: { opacity: 1 }
+    },
+    slideLeft: {
+      hidden: { opacity: 0, x: 80 },
+      visible: { opacity: 1, x: 0 }
+    },
+    slideRight: {
+      hidden: { opacity: 0, x: -80 },
+      visible: { opacity: 1, x: 0 }
+    },
+    scale: {
+      hidden: { opacity: 0, scale: 0.85 },
+      visible: { opacity: 1, scale: 1 }
+    },
+    blur: {
+      hidden: { opacity: 0, filter: 'blur(20px)' },
+      visible: { opacity: 1, filter: 'blur(0px)' }
+    }
+  };
+
+  return (
+    <motion.div
+      className="relative bg-black overflow-hidden"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+      variants={variants[variant]}
+      transition={{
+        duration: 0.8,
+        delay,
+        ease: [0.25, 0.46, 0.45, 0.94] // Smooth easeOutQuad
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+// Mobile Hero with special entrance animation
+const MobileHeroWrapper = ({ children }: { children: React.ReactNode }) => (
+  <motion.div
+    initial={{ opacity: 0, scale: 1.1 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{
+      duration: 1.2,
+      ease: [0.25, 0.46, 0.45, 0.94],
+      delay: 0.2
+    }}
+  >
+    {children}
+  </motion.div>
+);
+
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -62,41 +132,67 @@ export default function Home() {
     <main ref={containerRef} className="min-h-screen bg-black text-white selection:bg-brand-orange/30">
       <Navbar />
 
-      {/* 1. Hero Section (Base Layer) */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden z-0">
-        <motion.div style={{ opacity: heroOpacity, scale: heroScale }}>
+      {/* ===== MOBILE LAYOUT: Normal scrolling with smooth animations ===== */}
+      <div className="md:hidden overflow-x-hidden">
+        <MobileHeroWrapper>
           <Hero />
-        </motion.div>
+        </MobileHeroWrapper>
+        <MobileSection variant="scale" delay={0.1}>
+          <ProtocolArchitecture />
+        </MobileSection>
+        <MobileSection variant="blur" delay={0.05}>
+          <Architecture />
+        </MobileSection>
+        <MobileSection variant="fadeUp">
+          <StackingYield />
+        </MobileSection>
+        <MobileSection variant="slideLeft" delay={0.1}>
+          <Tokenomics />
+        </MobileSection>
+        <MobileSection variant="fadeIn" delay={0.05}>
+          <Security />
+          <Footer />
+        </MobileSection>
       </div>
 
-      {/* 2. Protocol Architecture Hub */}
-      <SectionOverlay zIndex={10} opacity={hubOpacity}>
-        <ProtocolArchitecture />
-      </SectionOverlay>
+      {/* ===== DESKTOP LAYOUT: Sticky stacking effect ===== */}
+      <div className="hidden md:block">
+        {/* 1. Hero Section (Base Layer) */}
+        <div className="sticky top-0 h-screen w-full overflow-hidden z-0">
+          <motion.div style={{ opacity: heroOpacity, scale: heroScale }}>
+            <Hero />
+          </motion.div>
+        </div>
 
-      {/* 3. Multi-Engine Architecture */}
-      <SectionOverlay zIndex={20} opacity={archOpacity}>
-        <Architecture />
-      </SectionOverlay>
+        {/* 2. Protocol Architecture Hub */}
+        <SectionOverlay zIndex={10} opacity={hubOpacity}>
+          <ProtocolArchitecture />
+        </SectionOverlay>
 
-      {/* 4. Stacking Yield cycles */}
-      <motion.div
-        style={{ zIndex: 30, opacity: yieldOpacity }}
-        className="relative shadow-[0_-50px_100px_rgba(0,0,0,0.8)] border-t border-white/10 bg-black"
-      >
-        <StackingYield />
-      </motion.div>
+        {/* 3. Multi-Engine Architecture */}
+        <SectionOverlay zIndex={20} opacity={archOpacity}>
+          <Architecture />
+        </SectionOverlay>
 
-      {/* 5. Tokenomics Overlay */}
-      <SectionOverlay zIndex={40}>
-        <Tokenomics />
-      </SectionOverlay>
+        {/* 4. Stacking Yield cycles */}
+        <motion.div
+          style={{ zIndex: 30, opacity: yieldOpacity }}
+          className="relative shadow-[0_-50px_100px_rgba(0,0,0,0.8)] border-t border-white/10 bg-black"
+        >
+          <StackingYield />
+        </motion.div>
 
-      {/* 6. Security & Final sections Overlay */}
-      <SectionOverlay zIndex={50}>
-        <Security />
-        <Footer />
-      </SectionOverlay>
+        {/* 5. Tokenomics Overlay */}
+        <SectionOverlay zIndex={40}>
+          <Tokenomics />
+        </SectionOverlay>
+
+        {/* 6. Security & Final sections Overlay */}
+        <SectionOverlay zIndex={50}>
+          <Security />
+          <Footer />
+        </SectionOverlay>
+      </div>
     </main>
   );
 }

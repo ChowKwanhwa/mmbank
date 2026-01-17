@@ -53,7 +53,7 @@ const CycleCard = ({ cycle, index, range, progress }: { cycle: any, index: numbe
     return (
         <motion.div
             style={{ y, scale, opacity, zIndex: 10 + index }}
-            className={`absolute inset-0 flex items-center justify-center p-6 md:p-12`}
+            className={`absolute inset-0 flex items-center justify-center p-12`}
         >
             <div className={`w-full max-w-5xl glass-card overflow-hidden bg-gradient-to-br ${cycle.gradient} border-2 border-brand-orange/40 shadow-[0_0_80px_rgba(255,109,1,0.2)] relative group`}>
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-orange to-transparent opacity-60" />
@@ -100,6 +100,45 @@ const CycleCard = ({ cycle, index, range, progress }: { cycle: any, index: numbe
     );
 };
 
+// Mobile-specific simple card layout
+const MobileCycleCard = ({ cycle, index }: { cycle: any, index: number }) => {
+    const { language } = useLanguage();
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+            className={`glass-card overflow-hidden bg-gradient-to-br ${cycle.gradient} border border-brand-orange/30 p-5`}
+        >
+            <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                    <Calendar className="w-5 h-5 text-brand-orange" />
+                    <span className="text-white font-black text-lg">
+                        {cycle.days.replace("Days", language === 'en' ? "Days" : "天").replace("Day", language === 'en' ? "Day" : "天")}
+                    </span>
+                </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+                <div className="bg-white/[0.03] rounded-xl p-4 border border-white/5">
+                    <div className="text-[10px] text-gray-500 font-bold uppercase tracking-wider mb-1">
+                        {language === 'en' ? "Daily" : "日收益"}
+                    </div>
+                    <div className="text-2xl font-black text-white">{cycle.daily}</div>
+                </div>
+                <div className="bg-brand-orange/10 rounded-xl p-4 border border-brand-orange/30">
+                    <div className="text-[10px] text-brand-orange font-bold uppercase tracking-wider mb-1">
+                        {language === 'en' ? "Monthly" : "月收益"}
+                    </div>
+                    <div className="text-2xl font-black text-brand-orange">{cycle.monthly}</div>
+                </div>
+            </div>
+        </motion.div>
+    );
+};
+
 export function StackingYield() {
     const { t } = useLanguage();
     const containerRef = useRef<HTMLDivElement>(null);
@@ -109,39 +148,63 @@ export function StackingYield() {
     });
 
     return (
-        <section id="staking" ref={containerRef} className="relative h-[400vh] bg-black">
-            <div className="sticky top-0 h-screen overflow-hidden">
-                {/* Section Header - Sticky-pinned */}
+        <>
+            {/* Mobile Layout - Simple vertical list */}
+            <section id="staking" className="md:hidden py-20 px-6 bg-black">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 1 }}
-                    className="absolute top-24 left-0 right-0 z-[60] text-center"
+                    className="text-center mb-10"
                 >
-                    <h2 className="text-5xl md:text-7xl font-black tracking-tight mb-4 uppercase">
+                    <h2 className="text-3xl font-black tracking-tight mb-3 uppercase">
                         {t.yield.title} <span className="text-gradient">{t.yield.titleHighlight}</span>
                     </h2>
-                    <p className="text-gray-500 text-xl font-medium tracking-wide">{t.yield.subtitle}</p>
+                    <p className="text-gray-500 text-sm font-medium">{t.yield.subtitle}</p>
                 </motion.div>
 
-                <div className="relative h-full w-full">
-                    {cycles.map((cycle, i) => {
-                        // Start stacking after a 15% scroll delay (dead zone for header)
-                        const start = 0.15 + (i * 0.75) / cycles.length;
-                        const end = 0.15 + ((i + 1) * 0.75) / cycles.length;
-                        return (
-                            <CycleCard
-                                key={i}
-                                cycle={cycle}
-                                index={i}
-                                range={[start, end]}
-                                progress={scrollYProgress}
-                            />
-                        );
-                    })}
+                <div className="space-y-4 max-w-md mx-auto">
+                    {cycles.map((cycle, i) => (
+                        <MobileCycleCard key={i} cycle={cycle} index={i} />
+                    ))}
                 </div>
-            </div>
-        </section>
+            </section>
+
+            {/* Desktop Layout - Stacking scroll effect */}
+            <section ref={containerRef} className="hidden md:block relative h-[400vh] bg-black">
+                <div className="sticky top-0 h-screen overflow-hidden">
+                    {/* Section Header - Sticky-pinned */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1 }}
+                        className="absolute top-24 left-0 right-0 z-[60] text-center"
+                    >
+                        <h2 className="text-5xl md:text-7xl font-black tracking-tight mb-4 uppercase">
+                            {t.yield.title} <span className="text-gradient">{t.yield.titleHighlight}</span>
+                        </h2>
+                        <p className="text-gray-500 text-xl font-medium tracking-wide">{t.yield.subtitle}</p>
+                    </motion.div>
+
+                    <div className="relative h-full w-full">
+                        {cycles.map((cycle, i) => {
+                            // Start stacking after a 15% scroll delay (dead zone for header)
+                            const start = 0.15 + (i * 0.75) / cycles.length;
+                            const end = 0.15 + ((i + 1) * 0.75) / cycles.length;
+                            return (
+                                <CycleCard
+                                    key={i}
+                                    cycle={cycle}
+                                    index={i}
+                                    range={[start, end]}
+                                    progress={scrollYProgress}
+                                />
+                            );
+                        })}
+                    </div>
+                </div>
+            </section>
+        </>
     );
 }

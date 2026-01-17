@@ -17,7 +17,7 @@ export function ProtocolArchitecture() {
     ];
 
     return (
-        <section id="architecture-hub" className="h-screen relative flex items-center justify-center overflow-hidden">
+        <section id="architecture-hub" className="min-h-screen md:h-screen relative flex items-center justify-center overflow-hidden">
             <div className="container mx-auto px-6 relative z-10 scale-[0.85] md:scale-100">
                 <div className="text-center mb-8 md:mb-16">
                     <h4 className="text-brand-orange font-bold uppercase tracking-[0.2em] text-xs mb-3">{t.protocol.badge}</h4>
@@ -62,8 +62,8 @@ export function ProtocolArchitecture() {
                         const positions: Record<string, string> = {
                             top: '-translate-y-[160px] md:-translate-y-[240px]',
                             bottom: 'translate-y-[140px] md:translate-y-[220px]',
-                            left: '-translate-x-[110px] md:-translate-x-[300px]',
-                            right: 'translate-x-[110px] md:translate-x-[300px]',
+                            left: '-translate-x-[130px] md:-translate-x-[300px]',
+                            right: 'translate-x-[130px] md:translate-x-[300px]',
                         };
 
                         const isVertical = node.pos === 'top' || node.pos === 'bottom';
@@ -97,11 +97,15 @@ export function ProtocolArchitecture() {
                                     transition={{ delay: 0.2 + i * 0.1 }}
                                     className={`absolute ${positions[node.pos]} z-30`}
                                 >
-                                    <div className="glass-card px-5 py-3 md:px-8 md:py-4 flex items-center gap-4 border-white/5 hover:border-brand-orange/40 group transition-all duration-300">
+                                    <div className={`glass-card border-white/5 hover:border-brand-orange/40 group transition-all duration-300
+                                        ${(node.pos === 'left' || node.pos === 'right')
+                                            ? 'flex-col items-center text-center px-4 py-5 gap-3 md:flex-row md:items-center md:text-left md:px-8 md:py-4 md:gap-4'
+                                            : 'px-5 py-3 md:px-8 md:py-4 gap-4'
+                                        } flex`}>
                                         <div className="bg-brand-orange/10 p-2.5 rounded-lg group-hover:scale-110 transition-transform">
                                             <node.icon className="w-5 h-5 text-brand-orange" />
                                         </div>
-                                        <div className="text-left">
+                                        <div className={`${(node.pos === 'left' || node.pos === 'right') ? 'text-center md:text-left' : 'text-left'}`}>
                                             <h4 className="text-lg font-black text-white">{node.label}</h4>
                                             {node.sub && <p className="text-[8px] text-gray-500 font-bold tracking-tight uppercase mt-0.5">{node.sub}</p>}
                                         </div>
