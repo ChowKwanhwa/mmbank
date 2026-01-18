@@ -383,27 +383,26 @@ export function Hero() {
                         {[...Array(2)].map((_, repeatIndex) => (
                             <div key={repeatIndex} className="flex items-center gap-8 md:gap-16 shrink-0">
                                 {[
-                                    { name: 'blackrock', width: 'w-28 md:w-36' },
-                                    { name: 'bnbchain', width: 'w-24 md:w-32' },
-                                    { name: 'chainlink', width: 'w-28 md:w-36' },
-                                    { name: 'chainsecurities', width: 'w-32 md:w-40' },
-                                    { name: 'deutsche', width: 'w-40 md:w-52' },
-                                    { name: 'gemini', width: 'w-36 md:w-48' },
-                                    { name: 'goldman-sachs', width: 'w-40 md:w-52' },
-                                    { name: 'jpm-brown', width: 'w-28 md:w-36' },
-                                    { name: 'kpmg', width: 'w-20 md:w-24' },
-                                    { name: 'metamask', width: 'w-32 md:w-40' },
-                                    { name: 'morganstanley', width: 'w-44 md:w-56' },
-                                    { name: 'nascent', width: 'w-36 md:w-48' },
-                                    { name: 'okx', width: 'w-16 md:w-20' },
-                                    { name: 'sp-global', width: 'w-28 md:w-36' },
-                                    { name: 'tether', width: 'w-24 md:w-28' },
-                                    { name: 'theblock', width: 'w-24 md:w-32' }
+                                    { name: 'blackrock', width: 'w-28 md:w-36', height: 'h-8 md:h-10' },
+                                    { name: 'bnbchain', width: 'w-24 md:w-32', height: 'h-8 md:h-10' },
+                                    { name: 'chainlink', width: 'w-28 md:w-36', height: 'h-8 md:h-10' },
+                                    { name: 'chainsecurities', width: 'w-32 md:w-40', height: 'h-8 md:h-10' },
+                                    { name: 'deutsche', width: 'w-48 md:w-64', height: 'h-14 md:h-20' },
+                                    { name: 'gemini', width: 'w-44 md:w-56', height: 'h-14 md:h-20' },
+                                    { name: 'goldman-sachs', width: 'w-48 md:w-64', height: 'h-14 md:h-20' },
+                                    { name: 'jpm-brown', width: 'w-28 md:w-36', height: 'h-8 md:h-10' },
+                                    { name: 'kpmg', width: 'w-36 md:w-44', height: 'h-14 md:h-20' },
+                                    { name: 'metamask', width: 'w-32 md:w-40', height: 'h-8 md:h-10' },
+                                    { name: 'morganstanley', width: 'w-56 md:w-72', height: 'h-14 md:h-20' },
+                                    { name: 'okx', width: 'w-16 md:w-20', height: 'h-8 md:h-10' },
+                                    { name: 'sp-global', width: 'w-28 md:w-36', height: 'h-8 md:h-10' },
+                                    { name: 'tether', width: 'w-24 md:w-28', height: 'h-8 md:h-10' },
+                                    { name: 'theblock', width: 'w-24 md:w-32', height: 'h-8 md:h-10' }
                                 ].map((logo) => (
                                     <div
                                         key={`${repeatIndex}-${logo.name}`}
-                                        className={`relative h-8 md:h-10 ${logo.width} shrink-0 opacity-50 hover:opacity-80 transition-opacity`}
-                                        style={{ filter: 'brightness(0) invert(1)' }}
+                                        className={`relative ${logo.height} ${logo.width} shrink-0 opacity-60 hover:opacity-100 transition-opacity`}
+                                        style={{ filter: 'brightness(0) invert(1) sepia(1) saturate(10) hue-rotate(5deg)' }}
                                     >
                                         <Image
                                             src={`/companyLogos/${logo.name}.svg`}

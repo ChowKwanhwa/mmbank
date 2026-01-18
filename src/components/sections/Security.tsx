@@ -86,24 +86,15 @@ export function Footer() {
                         <p className="text-gray-500 max-w-md mb-8 text-base leading-relaxed">
                             {t.footer.desc}
                         </p>
-                        <div className="flex gap-3">
-                            <a
-                                href="https://x.com/mmbank_cc"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="px-4 py-2 rounded-lg bg-white/[0.03] hover:bg-brand-orange/10 border border-white/5 hover:border-brand-orange/30 text-gray-400 hover:text-brand-orange transition-all text-[10px] font-black uppercase tracking-widest"
-                            >
-                                Twitter
-                            </a>
-                            <a
-                                href="mailto:contact@mmbank.cc"
-                                className="px-4 py-2 rounded-lg bg-white/[0.03] hover:bg-brand-orange/10 border border-white/5 hover:border-brand-orange/30 text-gray-400 hover:text-brand-orange transition-all text-[10px] font-black uppercase tracking-widest"
-                            >
-                                Email
-                            </a>
-                            <button className="px-4 py-2 rounded-lg bg-white/[0.03] hover:bg-brand-orange/10 border border-white/5 hover:border-brand-orange/30 text-gray-400 hover:text-brand-orange transition-all text-[10px] font-black uppercase tracking-widest">
-                                Telegram
-                            </button>
+                        <div className="flex flex-col gap-3 text-sm text-gray-400">
+                            <div className="flex items-center gap-2">
+                                <span className="text-brand-orange font-bold">Twitter:</span>
+                                <span>https://x.com/mmbank_cc</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <span className="text-brand-orange font-bold">Email:</span>
+                                <span>contact@mmbank.cc</span>
+                            </div>
                         </div>
                     </div>
 
