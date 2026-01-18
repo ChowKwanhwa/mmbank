@@ -63,7 +63,7 @@ export const translations = {
             badge: "Ecosystem Sustainability",
             title: "Transparent",
             titleHighlight: "Tokenomics",
-            subtitle: "FBT is a utility token minted via market-making behavior. No pre-mine, no private sale, 100% decentralized.",
+            subtitle: "MBC is a utility token minted via market-making behavior. No pre-mine, no private sale, 100% decentralized.",
             supply: "Supply Allocation",
             deflation: "Deflationary Mechanism",
             burnDesc: "* Guaranteed reduction via algorithmic burning",
@@ -93,13 +93,17 @@ export const translations = {
             resources: "Resources",
             links: {
                 stake: "Stake USDT",
-                mint: "Mint FBT",
+                mint: "Mint MBC",
                 aggregator: "Yield Aggregator",
                 governance: "Governance",
                 docs: "Documentation",
                 audit: "Security Audit",
                 media: "Media Kit",
                 terms: "Terms of Service"
+            },
+            social: {
+                twitter: "https://x.com/mmbank_cc",
+                email: "contact@mmbank.cc"
             },
             rights: "© 2024 MM BANK. All rights reserved.",
             powered: "Powered by BSC Mainnet · On-Chain Banking System"
@@ -167,7 +171,7 @@ export const translations = {
             badge: "生态可持续性",
             title: "透明",
             titleHighlight: "代币经济",
-            subtitle: "FBT 是通过做市行为铸造的实用代币。无预挖，无私募，100% 去中心化。",
+            subtitle: "MBC 是通过做市行为铸造的实用代币。无预挖，无私募，100% 去中心化。",
             supply: "供应分配",
             deflation: "通缩机制",
             burnDesc: "* 通过算法销毁保证供应持续减少",
@@ -197,13 +201,17 @@ export const translations = {
             resources: "相关资源",
             links: {
                 stake: "质押 USDT",
-                mint: "铸造 FBT",
+                mint: "铸造 MBC",
                 aggregator: "收益聚合器",
                 governance: "治理",
                 docs: "官方文档",
                 audit: "安全审计",
                 media: "媒体素材",
                 terms: "服务协议"
+            },
+            social: {
+                twitter: "https://x.com/mmbank_cc",
+                email: "contact@mmbank.cc"
             },
             rights: "© 2024 MM BANK. 版权所有。",
             powered: "基于 BSC 主网 · 链上银行系统"

@@ -87,11 +87,23 @@ export function Footer() {
                             {t.footer.desc}
                         </p>
                         <div className="flex gap-3">
-                            {['Twitter', 'Telegram', 'GitHub'].map((social, i) => (
-                                <button key={i} className="px-4 py-2 rounded-lg bg-white/[0.03] hover:bg-brand-orange/10 border border-white/5 hover:border-brand-orange/30 text-gray-400 hover:text-brand-orange transition-all text-[10px] font-black uppercase tracking-widest">
-                                    {social}
-                                </button>
-                            ))}
+                            <a
+                                href="https://x.com/mmbank_cc"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-4 py-2 rounded-lg bg-white/[0.03] hover:bg-brand-orange/10 border border-white/5 hover:border-brand-orange/30 text-gray-400 hover:text-brand-orange transition-all text-[10px] font-black uppercase tracking-widest"
+                            >
+                                Twitter
+                            </a>
+                            <a
+                                href="mailto:contact@mmbank.cc"
+                                className="px-4 py-2 rounded-lg bg-white/[0.03] hover:bg-brand-orange/10 border border-white/5 hover:border-brand-orange/30 text-gray-400 hover:text-brand-orange transition-all text-[10px] font-black uppercase tracking-widest"
+                            >
+                                Email
+                            </a>
+                            <button className="px-4 py-2 rounded-lg bg-white/[0.03] hover:bg-brand-orange/10 border border-white/5 hover:border-brand-orange/30 text-gray-400 hover:text-brand-orange transition-all text-[10px] font-black uppercase tracking-widest">
+                                Telegram
+                            </button>
                         </div>
                     </div>
 
