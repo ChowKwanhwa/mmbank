@@ -402,7 +402,7 @@ export function Hero() {
                                     <div
                                         key={`${repeatIndex}-${logo.name}`}
                                         className={`relative ${logo.height} ${logo.width} shrink-0 opacity-60 hover:opacity-100 transition-opacity`}
-                                        style={{ filter: 'brightness(0) invert(1) sepia(1) saturate(10) hue-rotate(5deg)' }}
+                                        style={{ filter: 'brightness(0) invert(48%) sepia(98%) saturate(3000%) hue-rotate(358deg) brightness(102%)' }}
                                     >
                                         <Image
                                             src={`/companyLogos/${logo.name}.svg`}
